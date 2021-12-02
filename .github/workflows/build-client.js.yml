@@ -26,6 +26,7 @@ jobs:
         name: react-app
         path: built/app.js
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download a react-app Artifact
