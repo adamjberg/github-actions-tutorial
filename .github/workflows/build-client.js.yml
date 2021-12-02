@@ -25,4 +25,13 @@ jobs:
       with:
         name: react-app
         path: built/app.js
-    
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download a react-app Artifact
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: react-app
+          path: built/app.js
+      - run: cat built/app.js
+        
