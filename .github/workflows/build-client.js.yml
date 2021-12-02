@@ -20,4 +20,9 @@ jobs:
         cache: 'yarn'
     - run: yarn install
     - run: yarn client:build
+    - name: Upload a app.js Build Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: react-app
+        path: built/app.js
     
