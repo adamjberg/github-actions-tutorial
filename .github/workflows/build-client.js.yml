@@ -33,6 +33,6 @@ jobs:
         uses: actions/download-artifact@v2.0.10
         with:
           name: react-app
-          path: built/app.js
-      - run: cat built/app.js
+          path: built/react-app
+      - run: cat built/react-app/app.js
         
