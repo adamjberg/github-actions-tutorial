@@ -1,4 +1,4 @@
-name: Build & Deploy React App
+name: Deploy
 
 on:
   push:
@@ -22,10 +22,10 @@ jobs:
         node-version: 16
         cache: 'yarn'
     - run: yarn install
-    - run: yarn client:build
+    - run: yarn build
     - run: mkdir ~/.ssh
     - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
     - run: chmod 400 ~/.ssh/github-action
     - run: echo -e "Host static\n\tUser github-actions-tutorial\n\tHostname 143.198.32.125\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-    - run: rsync -e ssh public/index.html static:~/static/index.html
-    - run: rsync -e ssh built/app.js static:~/static/js/app.js
+    - run: rsync -e ssh public static:~/static
+    - run: rsync -e ssh built static:~/static/js
