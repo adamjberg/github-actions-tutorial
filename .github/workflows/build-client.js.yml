@@ -26,8 +26,6 @@ jobs:
         name: react-app
         path: built/app.js
   deploy:
-    env:
-      SUPER_SECRET: ${{ secrets.SuperSecret }}
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -40,6 +38,7 @@ jobs:
       - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
+      - run: touch .ssh/config
       - run: echo -e "Host static\n\tUser static\n\tHostname 143.198.32.125\n\tIndentityFile ~/.ssh/github-action" >> .ssh/config
       - run: rsync -e ssh built/react-app/app.js static:~/built/app.js
         
