@@ -15,7 +15,7 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <div>Hello Github Actions!</div>
+      <div>Hello Github Actions v0.0.2!</div>
       <div>{message}</div>
     </>
   );
