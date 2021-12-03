@@ -36,6 +36,7 @@ jobs:
         with:
           name: react-app
           path: built/react-app
+      - run: mkdir ~/.ssh
       - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
         env:
           SSH_KEY: ${{secrets.SSH_KEY}}
