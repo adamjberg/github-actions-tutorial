@@ -36,7 +36,7 @@ jobs:
         with:
           name: react-app
           path: built/react-app
-      - run: 'echo "${{ secrets.SSH_KEY }}"" >> ~/.ssh/github-action'
+      - run: 'echo "${{ secrets.SSH_KEY }}" >> ~/.ssh/github-action'
       - run: echo -e "Host static\n\tUser static\n\tHostname 143.198.32.125\n\tIndentityFile ~/.ssh/github-action" >> .ssh/config
       - run: rsync -e ssh built/react-app/app.js static:~/built/app.js
         
