@@ -28,4 +28,5 @@ jobs:
     - run: chmod 400 ~/.ssh/github-action
     - run: echo -e "Host static\n\tUser github-actions-tutorial\n\tHostname 143.198.32.125\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
     - run: rsync -e ssh public static:~/static
-    - run: rsync -e ssh built static:~/static/js
+    - run: rsync -e ssh built/app.js static:~/static/js/app.js
+    - run: rsync -e ssh built/server.js static:~/api/server.js
