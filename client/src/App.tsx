@@ -9,13 +9,13 @@ export const App: React.FC = () => {
         return res.json();
       })
       .then((jsonData) => {
-        // setMessage(jsonData.data);
+        setMessage(jsonData.data);
       });
   }, []);
 
   return (
     <>
-      <div>Hello Github Actions v0.0.2!</div>
+      <div>Hello Github Actions v0.0.3!</div>
       <div>{message}</div>
     </>
   );
