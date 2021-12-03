@@ -9,7 +9,7 @@ export const App: React.FC = () => {
         return res.json();
       })
       .then((jsonData) => {
-        setMessage(jsonData.data);
+        // setMessage(jsonData.data);
       });
   }, []);
 
