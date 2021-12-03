@@ -28,6 +28,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    env:
+      SSH_KEY: ${{secrets.SSH_KEY}}
     steps:
       - name: Download a react-app Artifact
         uses: actions/download-artifact@v2.0.10
@@ -36,8 +38,7 @@ jobs:
           path: built/react-app
       - run: mkdir ~/.ssh
       - run: 'echo "$SSH_KEY" >> ~/.ssh/github-action'
-        env:
-          SSH_KEY: ${{secrets.SSH_KEY}}
+      - run: chmod 400 ~/.ssh/github-action
       - run: echo -e "Host static\n\tUser static\n\tHostname 143.198.32.125\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
       - run: rsync -e ssh built/react-app/app.js static:~/built/app.js
         
